@@ -21,8 +21,8 @@ function GameObject(video) {
   this.dimensions = video.dimensions;
 }
 
-GameObject.prototype.distory = function() {
-  return `${this.name} was removed from the game`;
+GameObject.prototype.destroy = function() {
+  return `${this.name} was removed from the game.`;
 };
 
 /*
@@ -35,11 +35,11 @@ function CharacterStats(videoCharacters) {
   this.healthPoints = videoCharacters.healthPoints;
   GameObject.call(this, videoCharacters);
 }
-CharacterStats.prototype.takeDamage = function() {
-  return `${this.name} took damage`;
-};
-
 CharacterStats.prototype = Object.create(GameObject.prototype);
+
+CharacterStats.prototype.takeDamage = function() {
+  return `${this.name} took damage.`;
+};
 
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
@@ -54,19 +54,20 @@ function Humanoid(human) {
   this.team = human.team;
   this.weapons = human.weapons;
   this.language = human.language;
+
   CharacterStats.call(this, human);
 }
-
 Humanoid.prototype = Object.create(CharacterStats.prototype);
+
+Humanoid.prototype.greet = function() {
+  return `${this.name} offers a greeting in ${this.language}`;
+};
 /*
  * Inheritance chain: GameObject -> CharacterStats -> Humanoid
  * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
  * Instances of CharacterStats should have all of the same properties as GameObject.
  */
 
-Humanoid.prototype.greet = function() {
-  return `${this.name} offers a greeting in ${this.language}`;
-};
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
 const mage = new Humanoid({
