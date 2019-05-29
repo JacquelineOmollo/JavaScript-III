@@ -57,6 +57,8 @@ terri.talker();
 // Principle 4
 
 // code example for Explicit Binding
+let todaysWorkouts = ["pullups", "pushups", "burpees", "jump rope"];
+
 function workouts(parm) {
   console.log(parm, this);
 }
@@ -64,7 +66,8 @@ function workouts(parm) {
 const myworkouts = {
   pushMovements: "Chest Press",
   pullMovements: "Dead Lift",
-  movements: function() {
+  movement: function() {
     console.log(this);
   }
 };
+workouts.apply(todaysWorkouts);
