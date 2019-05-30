@@ -16,7 +16,7 @@
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
 function GameObject(video) {
-  this.createdArt = video.createdArt;
+  this.createdAt = video.createdAt;
   this.name = video.name;
   this.dimensions = video.dimensions;
 }
